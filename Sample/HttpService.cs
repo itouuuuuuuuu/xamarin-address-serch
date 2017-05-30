@@ -11,14 +11,15 @@ namespace Sample
 	{
 		public static async Task<dynamic> getDataFromService(string queryString)
 		{
-			dynamic data = null;
-			HttpClient client = new HttpClient();
-			var response = await client.GetAsync(queryString);
+            dynamic data = null;                                // returnする変数
+			HttpClient client = new HttpClient();               // HttpClient型の変数
+			var response = await client.GetAsync(queryString);  // 非同期でhttpリクエストしレスポンスを取得
 
+            // nullでなく400文字以上でない場合
 			if ((response != null) && !((int)response.StatusCode >= 400))
 			{
-				string json = response.Content.ReadAsStringAsync().Result;
-				data = JsonConvert.DeserializeObject(json);
+				string json = response.Content.ReadAsStringAsync().Result; // レスポンスを取得
+				data = JsonConvert.DeserializeObject(json);                // json形式に変換
 			}
 
 			return data;

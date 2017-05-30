@@ -9,16 +9,17 @@ namespace Sample
 		{
 			InitializeComponent();
 			this.Title = "住所検索アプリ";
-			getAddressSerchBtn.Clicked += GetAddressSerchBtn_Clicked;
+			getAddressSerchBtn.Clicked += getAddressSerchBtn_Clicked;
 
-			this.BindingContext = new Address();
+			this.BindingContext = new Address(); // Addressクラスのインスタンスをバインディング（初期表示）
 		}
 
-		private async void GetAddressSerchBtn_Clicked(object sender, EventArgs e)
+		private async void getAddressSerchBtn_Clicked(object sender, EventArgs e)
 		{
+            // 入力された値がnullでなく7文字だった場合
 			if (!string.IsNullOrEmpty(AddressEntry.Text) && ((string)AddressEntry.Text).Length == 7)
 			{
-				Address Ad = await Core.GetAddressSerchResult(AddressEntry.Text);
+				Address Ad = await Core.getAddressSerchResult(AddressEntry.Text);
 
 				if (Ad == null)
 				{
@@ -27,7 +28,7 @@ namespace Sample
 				}
 				else
 				{
-					this.BindingContext = Ad;
+					this.BindingContext = Ad;    // 正しい結果の場合は検索結果をバインディング
 				}
 			}
 			else
