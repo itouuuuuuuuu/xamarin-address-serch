@@ -32,7 +32,7 @@
                     <StackLayout Padding="10, 10, 10, 10" HorizontalOptions='Start'>
                         <Label Text='住所検索' TextColor='White' FontAttributes="Bold" FontSize="Medium" />
                         <Label x:Name="AddressLabel" Text='郵便番号' Style="{StaticResource labelStyle}" />
-                        <Entry x:Name="AddressEntry" WidthRequest="100" />
+                        <Entry x:Name="AddressEntry" WidthRequest="200" TextColor="White"/>
                     </StackLayout>
 
                     <StackLayout Padding="0,0,0,0" VerticalOptions='End'>
